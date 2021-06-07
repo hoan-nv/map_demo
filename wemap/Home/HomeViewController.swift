@@ -201,6 +201,10 @@ extension HomeViewController: WeMapViewDelegate {
         @objc func handleMapTap(sender: UITapGestureRecognizer) {
             if sender.state == .ended {
 //                wemapView.removeAllAnnotation()
+//                public func removeAllAnnotation() {
+//                    mapView.removeAnnotations(mapView.annotations ?? [])
+//                }
+                
 //                wemapView.deselectFirstAnnotation(animated: true)
                 // Limit feature selection to just the following layer identifiers.
                 let layerIdentifiers: Set = ["home-symbols"]
