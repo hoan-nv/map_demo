@@ -41,8 +41,25 @@ class SearchViewController: UIViewController {
     
     var resutlsSearch: [WeMapPlace] = []
     var wemapView: WeMapView = WeMapView()
-    
+    let centerMyhome: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 20.993893749513248, longitude: 105.82176090675364)
     var searchStatus: SearchStatus = .start
+    
+    var startPlace: WeMapPlace? = nil {
+        didSet {
+            if let pl = startPlace {
+                tfStart.text = setAddress(place: pl)
+            }
+            
+        }
+    }
+    var endPPlace: WeMapPlace? = nil {
+        didSet {
+            if let pl = endPPlace {
+                tfEnd.text = setAddress(place: pl)
+            }
+        }
+    }
+    
     var vehicle: Vehicle = .car {
         didSet {
             if vehicle == .car {
@@ -69,26 +86,19 @@ class SearchViewController: UIViewController {
         vEnd.layer.borderWidth = 1
         let wemapView = WeMapView(frame: view.bounds)
         
+        wemapView.setCenter(centerMyhome, zoomLevel: 15, animated: false)
+        wemapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(wemapView)
+        wemapView.delegate = self
 
-                wemapView.setCenter(CLLocationCoordinate2D(latitude: 21.0266469, longitude: 105.7615744), zoomLevel: 12, animated: false)
-                wemapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                view.addSubview(wemapView)
-                wemapView.delegate = self
-//        if #available(iOS 13.0, *) {
-//            vStart.layer.borderColor = CGColor.init(red: 120, green: 135, blue: 145, alpha: 1)
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//        if #available(iOS 13.0, *) {
-//            vEnd.layer.borderColor = CGColor.init(red: 120, green: 135, blue: 145, alpha: 1)
-//        } else {
-//            // Fallback on earlier versions
-//        }
         view.bringSubviewToFront(vTop)
+        view.bringSubviewToFront(tableView)
         
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "ResultCell")
         tableView.delegate = self
         tableView.dataSource = self
+        tfEnd.delegate = self
+        tfStart.delegate = self
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -118,7 +128,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return resutlsSearch.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,6 +139,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lblName.text = resutlsSearch[indexPath.row].placeName
         cell.lblDistrict.text = setAddress(place: resutlsSearch[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.searchStatus == .start {
+            self.startPlace = resutlsSearch[indexPath.row]
+        } else {
+            self.endPPlace = resutlsSearch[indexPath.row]
+        }
+        tableView.isHidden = true
     }
     
     func setAddress(place: WeMapPlace) -> String{
@@ -157,6 +176,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        self.tableView.isHidden = false
         if textField == self.tfStart {
             self.searchStatus = .start
         } else {
@@ -167,6 +187,7 @@ extension SearchViewController: UITextFieldDelegate {
             if wemapPlaces.isEmpty {
                 DispatchQueue.main.async {
                     self.resutlsSearch = []
+                    print(self.resutlsSearch.count)
                     self.tableView.reloadData()
                 }
                 return
@@ -176,7 +197,6 @@ extension SearchViewController: UITextFieldDelegate {
                 self.tableView.reloadData()
             }
         }
-        
         
        let wemapSearch = WeMapSearch()
 

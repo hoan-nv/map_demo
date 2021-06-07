@@ -6,10 +6,10 @@ class LeftMenuViewController:
 // MARK: --Out let
     @IBOutlet weak var vAround: UIView!
     @IBOutlet weak var tblMenu: UITableView!
-    
+
 //   MARK: --var
     
-    var arrName = ["Đổi chế độ xem","10 chỗ sửa xe gần nhất", "!0 quán Circle K gần nhất", "10 cây xăng gần nhất"]
+    var arrName = ["10 chỗ sửa xe gần nhất", "!0 quán Circle K gần nhất", "10 cây xăng gần nhất"]
     
 //    MARK: --lifecycle
     
@@ -57,7 +57,14 @@ extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         cell.lblTitle.text = arrName[indexPath.row]
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+           
+        }
     }
     
    

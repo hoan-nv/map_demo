@@ -15,6 +15,8 @@ enum RightBarButtonStatus {
     case back
 }
 
+
+
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var vLocator: UIView!
@@ -26,9 +28,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     var menu = SideMenuNavigationController(rootViewController: LeftMenuViewController())
     
-    let locationManager = CLLocationManager()
+
     
-    let centerHanoi: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 21.0266469, longitude: 105.7615744)
+    let leftMenu = LeftMenuViewController()
+    
+    let locationManager = CLLocationManager()
+
+    
+    let centerMyhome: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 20.993893749513248, longitude: 105.82176090675364)
     
     var wemapView: WeMapView = WeMapView()
     
@@ -97,7 +104,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         wemapView = WeMapView(frame: view.bounds)
 
-        wemapView.setCenter(centerHanoi, zoomLevel: 12, animated: false)
+        wemapView.setCenter(centerMyhome, zoomLevel: 12, animated: true)
         wemapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(wemapView)
         view.bringSubviewToFront(vLocator)
@@ -112,20 +119,43 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         wemapView.delegate = self
         tfSearch.delegate = self
         
+    
+        
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "ResultCell")
         tableView.delegate = self
         tableView.dataSource = self
+
+        
+        
+        
+        menu = SideMenuNavigationController(rootViewController: leftMenu)
+        menu.leftSide = true
+        menu.presentationStyle = .menuSlideIn
+        menu.statusBarEndAlpha = 0
+        menu.menuWidth = 300
+        self.menu.presentationStyle.presentingEndAlpha = 0.5
+        SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view, forMenu: .left)
         
     }
 
     @IBAction func extendAction(_ sender: Any) {
+
         wemapView.isHidden = false
         if self.statusRightBar == .back {
             changeStateRight()
+        } else {
+            if self.statusRightBar == .exten {
+                self.present(self.menu, animated: true, completion: nil)
+            }
         }
+        
+        
+       
     }
     
     @IBAction func localAction(_ sender: Any) {
+        wemapView.setCenter(centerMyhome, zoomLevel: 15, animated: true)
     }
     
     
@@ -151,9 +181,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 extension HomeViewController: WeMapViewDelegate {
     func WeMapViewDidFinishLoadingMap(_ wemapView: WeMapView) {
         let coordinates = [
-            centerHanoi
+            centerMyhome
         ]
-
+        
         // Fill an array with point annotations and add it to the map.
         var pointAnnotations = [WeMapPointAnnotation]()
         for coordinate in coordinates {
@@ -189,8 +219,7 @@ extension HomeViewController: WeMapViewDelegate {
             singleTap.require(toFail: recognizer)
         }
         wemapView.addGestureRecognizer(singleTap)
-        
-        
+
     }
 
     func wemapView(_ wemapView: WeMapView, annotationCanShowCallout annotation: WeMapAnnotation) -> Bool {
@@ -200,10 +229,7 @@ extension HomeViewController: WeMapViewDelegate {
     // MARK: - Feature interaction
         @objc func handleMapTap(sender: UITapGestureRecognizer) {
             if sender.state == .ended {
-//                wemapView.removeAllAnnotation()
-//                public func removeAllAnnotation() {
-//                    mapView.removeAnnotations(mapView.annotations ?? [])
-//                }
+                wemapView.removeAllAnnotation()
                 
 //                wemapView.deselectFirstAnnotation(animated: true)
                 // Limit feature selection to just the following layer identifiers.
@@ -237,6 +263,8 @@ extension HomeViewController: WeMapViewDelegate {
 //                var ano: [WeMapAnnotation] = []
 //                ano.append(WeMapPointAnnotation(touchCoordinate))
                 wemapView.selectAnnotation(WeMapPointAnnotation(touchCoordinate), animated: false, completionHandler: {})
+                
+                tfSearch.text = String(touchCoordinate.latitude) + ", " + String(touchCoordinate.longitude)
                 
                 // If no features were found, deselect the selected annotation, if any.
                 
@@ -312,8 +340,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeStateRight()
         wemapView.setCenter(resutlsSearch[indexPath.row].location, zoomLevel: 16, animated: true)
+        wemapView.removeAllAnnotation()
+        wemapView.selectAnnotation(WeMapPointAnnotation(resutlsSearch[indexPath.row].location), animated: false, completionHandler: {})
         self.tfSearch.text = resutlsSearch[indexPath.row].placeName
-       
+        
         
     }
     

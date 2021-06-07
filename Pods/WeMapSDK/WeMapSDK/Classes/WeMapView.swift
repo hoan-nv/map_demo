@@ -238,6 +238,10 @@ open class WeMapView: UIView, MGLMapViewDelegate {
         mapView.addAnnotation(annotation.getAnnotation())
     }
     
+    public func removeAllAnnotation() {
+        mapView.removeAnnotations(mapView.annotations ?? [])
+    }
+    
     public func removeAnnotation(_ annotation: WeMapAnnotation){
         mapView.removeAnnotation(annotation.getAnnotation())
     }
