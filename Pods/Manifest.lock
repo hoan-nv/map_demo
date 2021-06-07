@@ -1,0 +1,54 @@
+PODS:
+  - Mapbox-iOS-SDK (5.6.1):
+    - MapboxMobileEvents (= 0.10.2)
+  - MapboxMobileEvents (0.10.2)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxGesture (3.0.2):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxLocalizer (1.5.0):
+    - RxCocoa (~> 5.1.1)
+    - RxSwift (~> 5.1.1)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.2)
+  - SideMenu (6.5.0)
+  - WeMapSDK (0.5.2):
+    - Mapbox-iOS-SDK (~> 5.6.0)
+
+DEPENDENCIES:
+  - RxCocoa
+  - RxGesture
+  - RxLocalizer
+  - RxSwift
+  - SideMenu
+  - WeMapSDK (~> 0.5.0)
+
+SPEC REPOS:
+  trunk:
+    - Mapbox-iOS-SDK
+    - MapboxMobileEvents
+    - RxCocoa
+    - RxGesture
+    - RxLocalizer
+    - RxRelay
+    - RxSwift
+    - SideMenu
+    - WeMapSDK
+
+SPEC CHECKSUMS:
+  Mapbox-iOS-SDK: b31bd62a5dd5b7e688eab787acd3d093a122f4d6
+  MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
+  RxLocalizer: 7db2f964848a885d996d36f47f0e88a477cd627a
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  WeMapSDK: a18fd94cabd9ea8ce1599e185408d5b2979c892b
+
+PODFILE CHECKSUM: c84ed4e195d3fb89389aec87a59632a869e15d4c
+
+COCOAPODS: 1.10.0

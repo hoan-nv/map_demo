@@ -1,0 +1,6 @@
+framework module Pods_wemap {
+  umbrella header "Pods-wemap-umbrella.h"
+
+  export *
+  module * { export * }
+}

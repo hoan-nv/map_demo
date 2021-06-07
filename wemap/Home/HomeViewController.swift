@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import WeMapSDK
+import SideMenu
 
 enum RightBarButtonStatus {
     case exten
@@ -22,6 +23,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var tfSearch: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vSearchRoad: UIView!
+    
+    var menu = SideMenuNavigationController(rootViewController: LeftMenuViewController())
     
     let locationManager = CLLocationManager()
     
@@ -197,7 +200,7 @@ extension HomeViewController: WeMapViewDelegate {
     // MARK: - Feature interaction
         @objc func handleMapTap(sender: UITapGestureRecognizer) {
             if sender.state == .ended {
-                wemapView.removeAllAnnotation()
+//                wemapView.removeAllAnnotation()
 //                wemapView.deselectFirstAnnotation(animated: true)
                 // Limit feature selection to just the following layer identifiers.
                 let layerIdentifiers: Set = ["home-symbols"]

@@ -1,0 +1,778 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB99E3B3266CFD29002F4108 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB99E3A2266CFD29002F4108 /* LeftMenuViewController.xib */; };
+		DB99E3C0266CFD29002F4108 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99E3B2266CFD29002F4108 /* LeftMenuViewController.swift */; };
+		DB99E3C9266CFEF4002F4108 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99E3C7266CFEF4002F4108 /* MenuCell.swift */; };
+		DB99E3CA266CFEF4002F4108 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB99E3C8266CFEF4002F4108 /* MenuCell.xib */; };
+		DBDC52B9265E26D300819090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52B8265E26D300819090 /* AppDelegate.swift */; };
+		DBDC52BB265E26D300819090 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52BA265E26D300819090 /* SceneDelegate.swift */; };
+		DBDC52BD265E26D300819090 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52BC265E26D300819090 /* ContentView.swift */; };
+		DBDC52BF265E26D400819090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBDC52BE265E26D400819090 /* Assets.xcassets */; };
+		DBDC52C2265E26D400819090 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBDC52C1265E26D400819090 /* Preview Assets.xcassets */; };
+		DBDC52C5265E26D400819090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBDC52C3265E26D400819090 /* LaunchScreen.storyboard */; };
+		DBDC52D0265E26D500819090 /* wemapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52CF265E26D500819090 /* wemapTests.swift */; };
+		DBDC52DB265E26D500819090 /* wemapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52DA265E26D500819090 /* wemapUITests.swift */; };
+		DBDC52EE265E270100819090 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52EC265E270100819090 /* HomeViewController.swift */; };
+		DBDC52EF265E270100819090 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBDC52ED265E270100819090 /* HomeViewController.xib */; };
+		DBDC531B265E2F4300819090 /* Pods_wemap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D296225280AB0C986839088E /* Pods_wemap.framework */; };
+		DBDC531C265E2F4300819090 /* Pods_wemap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D296225280AB0C986839088E /* Pods_wemap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DBDC532A265F4D4200819090 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC5329265F4D4100819090 /* UIView+Extension.swift */; };
+		DBDC5330265F5CC800819090 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC532E265F5CC800819090 /* ResultCell.swift */; };
+		DBDC5331265F5CC800819090 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBDC532F265F5CC800819090 /* ResultCell.xib */; };
+		DBDC5335265F7A0400819090 /* localts.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5334265F7A0300819090 /* localts.png */; };
+		DBDC53422660D38400819090 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC53402660D38400819090 /* SearchViewController.swift */; };
+		DBDC53432660D38400819090 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBDC53412660D38400819090 /* SearchViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DBDC52CC265E26D500819090 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBDC52AD265E26D300819090 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBDC52B4265E26D300819090;
+			remoteInfo = wemap;
+		};
+		DBDC52D7265E26D500819090 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBDC52AD265E26D300819090 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBDC52B4265E26D300819090;
+			remoteInfo = wemap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DBDC531D265E2F4300819090 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DBDC531C265E2F4300819090 /* Pods_wemap.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		099FD6BE460BB30E9B8E4698 /* Pods-wemap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wemap.release.xcconfig"; path = "Target Support Files/Pods-wemap/Pods-wemap.release.xcconfig"; sourceTree = "<group>"; };
+		388E8A5C640BA843A722ED73 /* Pods-wemap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wemap.debug.xcconfig"; path = "Target Support Files/Pods-wemap/Pods-wemap.debug.xcconfig"; sourceTree = "<group>"; };
+		D296225280AB0C986839088E /* Pods_wemap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wemap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB99E3A2266CFD29002F4108 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuViewController.xib; sourceTree = "<group>"; };
+		DB99E3B2266CFD29002F4108 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		DB99E3C7266CFEF4002F4108 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		DB99E3C8266CFEF4002F4108 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		DBDC52B5265E26D300819090 /* wemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBDC52B8265E26D300819090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DBDC52BA265E26D300819090 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DBDC52BC265E26D300819090 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DBDC52BE265E26D400819090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DBDC52C1265E26D400819090 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DBDC52C4265E26D400819090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DBDC52C6265E26D400819090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBDC52CB265E26D500819090 /* wemapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wemapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBDC52CF265E26D500819090 /* wemapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wemapTests.swift; sourceTree = "<group>"; };
+		DBDC52D1265E26D500819090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBDC52D6265E26D500819090 /* wemapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wemapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBDC52DA265E26D500819090 /* wemapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wemapUITests.swift; sourceTree = "<group>"; };
+		DBDC52DC265E26D500819090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBDC52EC265E270100819090 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DBDC52ED265E270100819090 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		DBDC5329265F4D4100819090 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		DBDC532E265F5CC800819090 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
+		DBDC532F265F5CC800819090 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
+		DBDC5334265F7A0300819090 /* localts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = localts.png; sourceTree = "<group>"; };
+		DBDC53402660D38400819090 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DBDC53412660D38400819090 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DBDC52B2265E26D300819090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDC531B265E2F4300819090 /* Pods_wemap.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDC52C8265E26D500819090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDC52D3265E26D500819090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A50BF589A0264FB53F9E10F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D296225280AB0C986839088E /* Pods_wemap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB99E3A1266CFD29002F4108 /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				DB99E3A2266CFD29002F4108 /* LeftMenuViewController.xib */,
+				DB99E3A3266CFD29002F4108 /* Cell */,
+				DB99E3B2266CFD29002F4108 /* LeftMenuViewController.swift */,
+			);
+			path = LeftMenu;
+			sourceTree = "<group>";
+		};
+		DB99E3A3266CFD29002F4108 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DB99E3C7266CFEF4002F4108 /* MenuCell.swift */,
+				DB99E3C8266CFEF4002F4108 /* MenuCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DBDC52AC265E26D300819090 = {
+			isa = PBXGroup;
+			children = (
+				DBDC52B7265E26D300819090 /* wemap */,
+				DBDC52CE265E26D500819090 /* wemapTests */,
+				DBDC52D9265E26D500819090 /* wemapUITests */,
+				DBDC52B6265E26D300819090 /* Products */,
+				F259DC641BA182F6014F9A89 /* Pods */,
+				A50BF589A0264FB53F9E10F6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DBDC52B6265E26D300819090 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DBDC52B5265E26D300819090 /* wemap.app */,
+				DBDC52CB265E26D500819090 /* wemapTests.xctest */,
+				DBDC52D6265E26D500819090 /* wemapUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBDC52B7265E26D300819090 /* wemap */ = {
+			isa = PBXGroup;
+			children = (
+				DB99E3A1266CFD29002F4108 /* LeftMenu */,
+				DBDC533A2660D34F00819090 /* Search */,
+				DBDC52EB265E26EE00819090 /* Home */,
+				DBDC52B8265E26D300819090 /* AppDelegate.swift */,
+				DBDC52BA265E26D300819090 /* SceneDelegate.swift */,
+				DBDC52BC265E26D300819090 /* ContentView.swift */,
+				DBDC52BE265E26D400819090 /* Assets.xcassets */,
+				DBDC5334265F7A0300819090 /* localts.png */,
+				DBDC52C3265E26D400819090 /* LaunchScreen.storyboard */,
+				DBDC52C6265E26D400819090 /* Info.plist */,
+				DBDC52C0265E26D400819090 /* Preview Content */,
+			);
+			path = wemap;
+			sourceTree = "<group>";
+		};
+		DBDC52C0265E26D400819090 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DBDC52C1265E26D400819090 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DBDC52CE265E26D500819090 /* wemapTests */ = {
+			isa = PBXGroup;
+			children = (
+				DBDC52CF265E26D500819090 /* wemapTests.swift */,
+				DBDC52D1265E26D500819090 /* Info.plist */,
+			);
+			path = wemapTests;
+			sourceTree = "<group>";
+		};
+		DBDC52D9265E26D500819090 /* wemapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DBDC52DA265E26D500819090 /* wemapUITests.swift */,
+				DBDC52DC265E26D500819090 /* Info.plist */,
+			);
+			path = wemapUITests;
+			sourceTree = "<group>";
+		};
+		DBDC52EB265E26EE00819090 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DBDC532D265F5C9B00819090 /* Cell */,
+				DBDC5329265F4D4100819090 /* UIView+Extension.swift */,
+				DBDC52EC265E270100819090 /* HomeViewController.swift */,
+				DBDC52ED265E270100819090 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DBDC532D265F5C9B00819090 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DBDC532E265F5CC800819090 /* ResultCell.swift */,
+				DBDC532F265F5CC800819090 /* ResultCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DBDC533A2660D34F00819090 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DBDC53402660D38400819090 /* SearchViewController.swift */,
+				DBDC53412660D38400819090 /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F259DC641BA182F6014F9A89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				388E8A5C640BA843A722ED73 /* Pods-wemap.debug.xcconfig */,
+				099FD6BE460BB30E9B8E4698 /* Pods-wemap.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DBDC52B4265E26D300819090 /* wemap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBDC52DF265E26D500819090 /* Build configuration list for PBXNativeTarget "wemap" */;
+			buildPhases = (
+				E831C88EAC3AAA4E643983B5 /* [CP] Check Pods Manifest.lock */,
+				DBDC52B1265E26D300819090 /* Sources */,
+				DBDC52B2265E26D300819090 /* Frameworks */,
+				DBDC52B3265E26D300819090 /* Resources */,
+				A1E89C23C50A7B4020D34F9A /* [CP] Embed Pods Frameworks */,
+				DBDC531D265E2F4300819090 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wemap;
+			productName = wemap;
+			productReference = DBDC52B5265E26D300819090 /* wemap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DBDC52CA265E26D500819090 /* wemapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBDC52E2265E26D500819090 /* Build configuration list for PBXNativeTarget "wemapTests" */;
+			buildPhases = (
+				DBDC52C7265E26D500819090 /* Sources */,
+				DBDC52C8265E26D500819090 /* Frameworks */,
+				DBDC52C9265E26D500819090 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBDC52CD265E26D500819090 /* PBXTargetDependency */,
+			);
+			name = wemapTests;
+			productName = wemapTests;
+			productReference = DBDC52CB265E26D500819090 /* wemapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DBDC52D5265E26D500819090 /* wemapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBDC52E5265E26D500819090 /* Build configuration list for PBXNativeTarget "wemapUITests" */;
+			buildPhases = (
+				DBDC52D2265E26D500819090 /* Sources */,
+				DBDC52D3265E26D500819090 /* Frameworks */,
+				DBDC52D4265E26D500819090 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBDC52D8265E26D500819090 /* PBXTargetDependency */,
+			);
+			name = wemapUITests;
+			productName = wemapUITests;
+			productReference = DBDC52D6265E26D500819090 /* wemapUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DBDC52AD265E26D300819090 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					DBDC52B4265E26D300819090 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					DBDC52CA265E26D500819090 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = DBDC52B4265E26D300819090;
+					};
+					DBDC52D5265E26D500819090 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = DBDC52B4265E26D300819090;
+					};
+				};
+			};
+			buildConfigurationList = DBDC52B0265E26D300819090 /* Build configuration list for PBXProject "wemap" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DBDC52AC265E26D300819090;
+			productRefGroup = DBDC52B6265E26D300819090 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DBDC52B4265E26D300819090 /* wemap */,
+				DBDC52CA265E26D500819090 /* wemapTests */,
+				DBDC52D5265E26D500819090 /* wemapUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DBDC52B3265E26D300819090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDC52C5265E26D400819090 /* LaunchScreen.storyboard in Resources */,
+				DBDC52C2265E26D400819090 /* Preview Assets.xcassets in Resources */,
+				DB99E3B3266CFD29002F4108 /* LeftMenuViewController.xib in Resources */,
+				DB99E3CA266CFEF4002F4108 /* MenuCell.xib in Resources */,
+				DBDC52BF265E26D400819090 /* Assets.xcassets in Resources */,
+				DBDC52EF265E270100819090 /* HomeViewController.xib in Resources */,
+				DBDC5335265F7A0400819090 /* localts.png in Resources */,
+				DBDC5331265F5CC800819090 /* ResultCell.xib in Resources */,
+				DBDC53432660D38400819090 /* SearchViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDC52C9265E26D500819090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDC52D4265E26D500819090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1E89C23C50A7B4020D34F9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wemap/Pods-wemap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wemap/Pods-wemap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wemap/Pods-wemap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E831C88EAC3AAA4E643983B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wemap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DBDC52B1265E26D300819090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDC52B9265E26D300819090 /* AppDelegate.swift in Sources */,
+				DBDC53422660D38400819090 /* SearchViewController.swift in Sources */,
+				DB99E3C9266CFEF4002F4108 /* MenuCell.swift in Sources */,
+				DBDC52BB265E26D300819090 /* SceneDelegate.swift in Sources */,
+				DBDC5330265F5CC800819090 /* ResultCell.swift in Sources */,
+				DBDC52BD265E26D300819090 /* ContentView.swift in Sources */,
+				DBDC532A265F4D4200819090 /* UIView+Extension.swift in Sources */,
+				DBDC52EE265E270100819090 /* HomeViewController.swift in Sources */,
+				DB99E3C0266CFD29002F4108 /* LeftMenuViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDC52C7265E26D500819090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDC52D0265E26D500819090 /* wemapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDC52D2265E26D500819090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDC52DB265E26D500819090 /* wemapUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DBDC52CD265E26D500819090 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBDC52B4265E26D300819090 /* wemap */;
+			targetProxy = DBDC52CC265E26D500819090 /* PBXContainerItemProxy */;
+		};
+		DBDC52D8265E26D500819090 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBDC52B4265E26D300819090 /* wemap */;
+			targetProxy = DBDC52D7265E26D500819090 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DBDC52C3265E26D400819090 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBDC52C4265E26D400819090 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DBDC52DD265E26D500819090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DBDC52DE265E26D500819090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DBDC52E0265E26D500819090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 388E8A5C640BA843A722ED73 /* Pods-wemap.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"wemap/Preview Content\"";
+				DEVELOPMENT_TEAM = 2N83XHCR9B;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = wemap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = wemap.hoan.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DBDC52E1265E26D500819090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 099FD6BE460BB30E9B8E4698 /* Pods-wemap.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"wemap/Preview Content\"";
+				DEVELOPMENT_TEAM = 2N83XHCR9B;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = wemap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = wemap.hoan.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		DBDC52E3265E26D500819090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6YNFK2Q67S;
+				INFOPLIST_FILE = wemapTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fds.wemapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wemap.app/wemap";
+			};
+			name = Debug;
+		};
+		DBDC52E4265E26D500819090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6YNFK2Q67S;
+				INFOPLIST_FILE = wemapTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fds.wemapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wemap.app/wemap";
+			};
+			name = Release;
+		};
+		DBDC52E6265E26D500819090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6YNFK2Q67S;
+				INFOPLIST_FILE = wemapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fds.wemapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wemap;
+			};
+			name = Debug;
+		};
+		DBDC52E7265E26D500819090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6YNFK2Q67S;
+				INFOPLIST_FILE = wemapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fds.wemapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wemap;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DBDC52B0265E26D300819090 /* Build configuration list for PBXProject "wemap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBDC52DD265E26D500819090 /* Debug */,
+				DBDC52DE265E26D500819090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBDC52DF265E26D500819090 /* Build configuration list for PBXNativeTarget "wemap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBDC52E0265E26D500819090 /* Debug */,
+				DBDC52E1265E26D500819090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBDC52E2265E26D500819090 /* Build configuration list for PBXNativeTarget "wemapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBDC52E3265E26D500819090 /* Debug */,
+				DBDC52E4265E26D500819090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBDC52E5265E26D500819090 /* Build configuration list for PBXNativeTarget "wemapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBDC52E6265E26D500819090 /* Debug */,
+				DBDC52E7265E26D500819090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DBDC52AD265E26D300819090 /* Project object */;
+}

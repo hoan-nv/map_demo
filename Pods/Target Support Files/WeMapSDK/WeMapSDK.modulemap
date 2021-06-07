@@ -1,0 +1,6 @@
+framework module WeMapSDK {
+  umbrella header "WeMapSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
