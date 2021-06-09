@@ -132,7 +132,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         menu.leftSide = true
         menu.presentationStyle = .menuSlideIn
         menu.statusBarEndAlpha = 0
-        menu.menuWidth = 300
+        menu.menuWidth = 250
         self.menu.presentationStyle.presentingEndAlpha = 0.5
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view, forMenu: .left)
@@ -199,7 +199,7 @@ extension HomeViewController: WeMapViewDelegate {
 
         // Add the image to the style's sprite
         if #available(iOS 13.0, *) {
-            if let image = UIImage(systemName: "line.horizontal.3") {
+            if let image = UIImage(systemName: "circlebadge.fill") {
                 wemapView.setImage(image, forName: "icon-house")
             }
         } else {
@@ -307,7 +307,7 @@ extension HomeViewController: UITextFieldDelegate {
        let wemapSearch = WeMapSearch()
 
        //gioi han so luong du lieu tra ve
-       let wemapOptions = WeMapSearchOptions(10, focusPoint: CLLocationCoordinate2D(latitude: 21.031772, longitude: 105.799508), latLngBounds: WeMapLatLonBounds(minLon: 104.799508, minLat: 20.031772, maxLon: 105.799508, maxLat: 21.031772))
+       let wemapOptions = WeMapSearchOptions(100, focusPoint: CLLocationCoordinate2D(latitude: 21.031772, longitude: 105.799508), latLngBounds: WeMapLatLonBounds(minLon: 104.799508, minLat: 20.031772, maxLon: 105.799508, maxLat: 21.031772))
         
         
         if textField.text ?? "" != "" {
@@ -334,6 +334,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.lblName.text = resutlsSearch[indexPath.row].placeName
         cell.lblDistrict.text = setAddress(place: resutlsSearch[indexPath.row])
+        let start = CLLocation(latitude: centerMyhome.latitude, longitude: centerMyhome.longitude)
+        let end = CLLocation(latitude: resutlsSearch[indexPath.row].location.latitude, longitude: resutlsSearch[indexPath.row].location.longitude)
+        cell.lblDistant.text = String(Double(round(start.distance(from: end)/1000 * 100) / 100)) + " km"
         return cell
     }
     

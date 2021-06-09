@@ -63,7 +63,16 @@ extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-           
+            let nextVC = ListLocationViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        if indexPath.row == 1 {
+            let nextVC = ListLocationViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        if indexPath.row == 2 {
+            let nextVC = ListLocationViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
     

@@ -93,6 +93,7 @@ class SearchViewController: UIViewController {
 
         view.bringSubviewToFront(vTop)
         view.bringSubviewToFront(tableView)
+        tableView.isHidden = true
         
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "ResultCell")
         tableView.delegate = self
@@ -100,6 +101,9 @@ class SearchViewController: UIViewController {
         tfEnd.delegate = self
         tfStart.delegate = self
     }
+    
+    
+   
     
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -138,6 +142,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.lblName.text = resutlsSearch[indexPath.row].placeName
         cell.lblDistrict.text = setAddress(place: resutlsSearch[indexPath.row])
+        cell.lblDistant.isHidden = true
+        
         return cell
     }
     
@@ -146,6 +152,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             self.startPlace = resutlsSearch[indexPath.row]
         } else {
             self.endPPlace = resutlsSearch[indexPath.row]
+            let nextVC = RouteViewController()
+            nextVC.startLocation = startPlace?.location ?? centerMyhome
+            nextVC.endLocation = endPPlace?.location ?? centerMyhome
+            var vhc = "car"
+            if self.vehicle == .bike {
+                vhc = "bike"
+            } else if self.vehicle == .person {
+                vhc = "foot"
+            }
+            nextVC.vehicle = vhc
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
         tableView.isHidden = true
     }
@@ -214,6 +231,6 @@ extension SearchViewController: UITextFieldDelegate {
 
 extension SearchViewController:  WeMapViewDelegate {
     func WeMapViewDidFinishLoadingMap(_ wemapView: WeMapView) {
-        print("done")
+       print("done")
     }
 }
