@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="wemap" customModuleProvider="target">
             <connections>
+                <outlet property="actionBackMode" destination="fS4-Us-1TE" id="ips-uV-Ph7"/>
                 <outlet property="btnRight" destination="1ZR-YG-lkE" id="08M-jl-ggG"/>
                 <outlet property="tableView" destination="ksp-6b-5Fp" id="sTi-la-5nC"/>
                 <outlet property="tfSearch" destination="AaY-OS-SJ3" id="m8s-6c-IyB"/>
@@ -30,6 +31,13 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS4-Us-1TE">
+                    <rect key="frame" x="144" y="128" width="20" height="22"/>
+                    <state key="normal" image="arrow.backward" catalog="system"/>
+                    <connections>
+                        <action selector="ActionBack:" destination="-1" eventType="touchUpInside" id="chq-kA-PUy"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXh-VH-xih" userLabel="locator">
                     <rect key="frame" x="334" y="706" width="50" height="50"/>
                     <subviews>
@@ -109,13 +117,17 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.96471244099999998" green="0.96469432119999998" blue="0.96470659969999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="fS4-Us-1TE" firstAttribute="width" secondItem="1ZR-YG-lkE" secondAttribute="width" id="0eY-Oe-5tA"/>
                 <constraint firstItem="sn8-eX-gO2" firstAttribute="top" secondItem="TXh-VH-xih" secondAttribute="bottom" constant="20" id="2at-hf-3qA"/>
+                <constraint firstItem="fS4-Us-1TE" firstAttribute="centerX" secondItem="1ZR-YG-lkE" secondAttribute="centerX" id="5qe-vR-kRw"/>
                 <constraint firstItem="ksp-6b-5Fp" firstAttribute="top" secondItem="cB3-Hx-sVY" secondAttribute="bottom" constant="30" id="7UZ-dm-f2n"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ksp-6b-5Fp" secondAttribute="bottom" constant="20" id="AKw-l9-XjN"/>
                 <constraint firstItem="ksp-6b-5Fp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="C62-wV-mDP"/>
                 <constraint firstItem="sn8-eX-gO2" firstAttribute="centerX" secondItem="R7H-PT-RME" secondAttribute="centerX" id="EB5-IY-vjj"/>
+                <constraint firstItem="fS4-Us-1TE" firstAttribute="centerY" secondItem="1ZR-YG-lkE" secondAttribute="centerY" id="FUp-D8-Q1E"/>
                 <constraint firstAttribute="bottom" secondItem="TXh-VH-xih" secondAttribute="bottom" constant="140" id="WoV-xu-b7g"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ksp-6b-5Fp" secondAttribute="trailing" constant="20" id="YSx-dc-MDb"/>
+                <constraint firstItem="fS4-Us-1TE" firstAttribute="height" secondItem="1ZR-YG-lkE" secondAttribute="height" id="dtP-5t-3Wf"/>
                 <constraint firstItem="cB3-Hx-sVY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="e21-ba-cay"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cB3-Hx-sVY" secondAttribute="trailing" constant="20" id="mps-nZ-72a"/>
                 <constraint firstItem="cB3-Hx-sVY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="uRl-IV-4qx"/>
@@ -125,6 +137,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.up.right.diamond.fill" catalog="system" width="128" height="122"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="scope" catalog="system" width="128" height="122"/>

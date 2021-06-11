@@ -15,6 +15,7 @@
 		DB99E3DF266E1075002F4108 /* RouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB99E3DD266E1075002F4108 /* RouteViewController.xib */; };
 		DB99E3E7266E21D4002F4108 /* ListLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99E3E5266E21D4002F4108 /* ListLocationViewController.swift */; };
 		DB99E3E8266E21D4002F4108 /* ListLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB99E3E6266E21D4002F4108 /* ListLocationViewController.xib */; };
+		DB99E3EE2670C805002F4108 /* imap.png in Resources */ = {isa = PBXBuildFile; fileRef = DB99E3ED2670C805002F4108 /* imap.png */; };
 		DBDC52B9265E26D300819090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52B8265E26D300819090 /* AppDelegate.swift */; };
 		DBDC52BB265E26D300819090 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52BA265E26D300819090 /* SceneDelegate.swift */; };
 		DBDC52BD265E26D300819090 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDC52BC265E26D300819090 /* ContentView.swift */; };
@@ -78,6 +79,7 @@
 		DB99E3DD266E1075002F4108 /* RouteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteViewController.xib; sourceTree = "<group>"; };
 		DB99E3E5266E21D4002F4108 /* ListLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLocationViewController.swift; sourceTree = "<group>"; };
 		DB99E3E6266E21D4002F4108 /* ListLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListLocationViewController.xib; sourceTree = "<group>"; };
+		DB99E3ED2670C805002F4108 /* imap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imap.png; sourceTree = "<group>"; };
 		DBDC52B5265E26D300819090 /* wemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDC52B8265E26D300819090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBDC52BA265E26D300819090 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				DBDC52BA265E26D300819090 /* SceneDelegate.swift */,
 				DBDC52BC265E26D300819090 /* ContentView.swift */,
 				DBDC52BE265E26D400819090 /* Assets.xcassets */,
+				DB99E3ED2670C805002F4108 /* imap.png */,
 				DBDC5334265F7A0300819090 /* localts.png */,
 				DBDC52C3265E26D400819090 /* LaunchScreen.storyboard */,
 				DBDC52C6265E26D400819090 /* Info.plist */,
@@ -387,6 +390,7 @@
 			files = (
 				DBDC52C5265E26D400819090 /* LaunchScreen.storyboard in Resources */,
 				DBDC52C2265E26D400819090 /* Preview Assets.xcassets in Resources */,
+				DB99E3EE2670C805002F4108 /* imap.png in Resources */,
 				DB99E3B3266CFD29002F4108 /* LeftMenuViewController.xib in Resources */,
 				DB99E3CA266CFEF4002F4108 /* MenuCell.xib in Resources */,
 				DBDC52BF265E26D400819090 /* Assets.xcassets in Resources */,

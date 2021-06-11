@@ -1,16 +1,20 @@
 import UIKit
 
 
+protocol LeftMenuViewControllerDelegate: class {
+    func setPosition(type: typePositions)
+}
+
 class LeftMenuViewController:
     UIViewController {
 // MARK: --Out let
     @IBOutlet weak var vAround: UIView!
     @IBOutlet weak var tblMenu: UITableView!
-
+    
 //   MARK: --var
     
     var arrName = ["10 chỗ sửa xe gần nhất", "!0 quán Circle K gần nhất", "10 cây xăng gần nhất"]
-    
+    weak var delegate: LeftMenuViewControllerDelegate? = nil
 //    MARK: --lifecycle
     
     override func viewDidLoad() {
@@ -63,16 +67,16 @@ extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let nextVC = ListLocationViewController()
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            delegate?.setPosition(type: .FixMotobike)
+            self.dismiss(animated: true, completion: nil)
         }
         if indexPath.row == 1 {
-            let nextVC = ListLocationViewController()
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            delegate?.setPosition(type: .CircleK)
+            self.dismiss(animated: true, completion: nil)
         }
         if indexPath.row == 2 {
-            let nextVC = ListLocationViewController()
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            delegate?.setPosition(type: .Fuel)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

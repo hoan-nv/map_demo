@@ -15,6 +15,11 @@ enum RightBarButtonStatus {
     case back
 }
 
+enum Mode {
+    case Normal
+    case TenPositon
+}
+
 
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
@@ -25,13 +30,32 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var tfSearch: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var vSearchRoad: UIView!
+    @IBOutlet weak var actionBackMode: UIButton!
+    
+    @IBAction func ActionBack(_ sender: Any) {
+        self.mode = .Normal
+        self.wemapView.removeAllAnnotation()
+    }
+    
+    public var mode: Mode = .Normal {
+        didSet {
+            if mode == .Normal  {
+                vSearch.isHidden = false
+                vLocator.isHidden = false
+                vSearchRoad.isHidden = false
+            } else {
+                vSearch.isHidden = true
+                vLocator.isHidden = true
+                vSearchRoad.isHidden = true
+//                tableView.isHidden = true
+            }
+        }
+    }
     
     var menu = SideMenuNavigationController(rootViewController: LeftMenuViewController())
-    
 
-    
     let leftMenu = LeftMenuViewController()
-    
+
     let locationManager = CLLocationManager()
 
     
@@ -40,6 +64,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var wemapView: WeMapView = WeMapView()
     
     var resutlsSearch: [WeMapPlace] = []
+    var resultPoints: [CLLocationCoordinate2D] = []
     
     var statusRightBar: RightBarButtonStatus = .exten {
         didSet {
@@ -94,22 +119,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-    
-        
-        
-        
-        
-        
-        
         
         wemapView = WeMapView(frame: view.bounds)
 
         wemapView.setCenter(centerMyhome, zoomLevel: 12, animated: true)
         wemapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(wemapView)
+        view.bringSubviewToFront(actionBackMode)
         view.bringSubviewToFront(vLocator)
         view.bringSubviewToFront(vSearch)
         view.bringSubviewToFront(vSearchRoad)
+        
+    
         vSearch.setShadowRadiusView()
         vSearch.layer.cornerRadius = 12
         vLocator.setShadowRadiusView()
@@ -118,7 +139,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         vSearchRoad.layer.cornerRadius = 25
         wemapView.delegate = self
         tfSearch.delegate = self
-        
+        leftMenu.delegate = self
     
         
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "ResultCell")
@@ -183,7 +204,7 @@ extension HomeViewController: WeMapViewDelegate {
         let coordinates = [
             centerMyhome
         ]
-        
+
         // Fill an array with point annotations and add it to the map.
         var pointAnnotations = [WeMapPointAnnotation]()
         for coordinate in coordinates {
@@ -208,7 +229,6 @@ extension HomeViewController: WeMapViewDelegate {
 
         // Tell the layer to use the image in the sprite
         shapeLayer.iconImageName = NSExpression(forConstantValue: "icon-house")
-
         // Add the source and style layer to the map
         wemapView.addSource(shapeSource)
         wemapView.addLayer(shapeLayer)
@@ -222,71 +242,52 @@ extension HomeViewController: WeMapViewDelegate {
 
     }
 
-    func wemapView(_ wemapView: WeMapView, annotationCanShowCallout annotation: WeMapAnnotation) -> Bool {
-        return true
-    }
+//    func wemapView(_ wemapView: WeMapView, annotationCanShowCallout annotation: WeMapAnnotation) -> Bool {
+//        return true
+//    }
     
     // MARK: - Feature interaction
         @objc func handleMapTap(sender: UITapGestureRecognizer) {
+            self.tfSearch.endFloatingCursor()
+            self.tfSearch.endEditing(true)
+            let point = sender.location(in: sender.view!)
+            let touchCoordinate = wemapView.convert(point, toCoordinateFrom: sender.view!)
             if sender.state == .ended {
-                wemapView.removeAllAnnotation()
-                
-//                wemapView.deselectFirstAnnotation(animated: true)
-                // Limit feature selection to just the following layer identifiers.
-                let layerIdentifiers: Set = ["home-symbols"]
-                // Try matching the exact point first.
-                let point = sender.location(in: sender.view!)
-                
-                for pointAnnotation in wemapView.visibleFeatures(at: point, styleLayerIdentifiers: layerIdentifiers) {
-                    wemapView.selectAnnotation(pointAnnotation, animated: false, completionHandler: {}) 
-                    return
+                if mode == .Normal {
+                    
+                    wemapView.removeAllAnnotation()
+                    
+                    // Try matching the exact point first.
+                    wemapView.selectAnnotation(WeMapPointAnnotation(touchCoordinate), animated: false, completionHandler: {})
+                    
+                    tfSearch.text = String(touchCoordinate.latitude) + ", " + String(touchCoordinate.longitude)
+                } else {
+//
+//                    func sortPositon(pl1: WeMapPlace,pl2: WeMapPlace) -> Bool {
+//                        let end1 = CLLocation(latitude: pl1.location.latitude, longitude: pl1.location.longitude)
+//                        let end2 = CLLocation(latitude: pl2.location.latitude, longitude: pl2.location.longitude)
+//                        return start.distance(from: end1) < start.distance(from: end2)
+//
+//                    }
+                    let start = CLLocation(latitude: touchCoordinate.latitude, longitude: touchCoordinate.longitude)
+                    for point in self.resultPoints {
+                        let end = CLLocation(latitude: point.latitude, longitude: point.longitude)
+                        print(start.distance(from: end))
+                        if start.distance(from: end) < 100 {
+                            print("hi")
+                        }
+                    }
                 }
-
-                let touchCoordinate = wemapView.convert(point, toCoordinateFrom: sender.view!)
-                let touchLocation = CLLocation(latitude: touchCoordinate.latitude , longitude: touchCoordinate.longitude )
-
-                // Otherwise, get all features within a rect the size of a touch (44x44).
-                let touchRect = CGRect(origin: point, size: .zero).insetBy(dx: -22.0, dy: -22.0)
-                let possibleFeatures = wemapView.visibleFeatures(inCGRect: touchRect, styleLayerIdentifiers: Set(layerIdentifiers))
                 
-               
-                
-
-                // Select the closest feature to the touch center.
-                let closestFeatures = possibleFeatures?.sorted(by: {
-                    return CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude).distance(from: touchLocation) < CLLocation(latitude: $1.coordinate.latitude, longitude: $1.coordinate.longitude).distance(from: touchLocation)
-                })
-//                if let feature = closestFeatures?.first {
-//                    wemapView.selectAnnotation(feature, animated: false, completionHandler: {})
-//                    return
-//                }
-//                var ano: [WeMapAnnotation] = []
-//                ano.append(WeMapPointAnnotation(touchCoordinate))
-                wemapView.selectAnnotation(WeMapPointAnnotation(touchCoordinate), animated: false, completionHandler: {})
-                
-                tfSearch.text = String(touchCoordinate.latitude) + ", " + String(touchCoordinate.longitude)
-                
-                // If no features were found, deselect the selected annotation, if any.
-                
-                
-                
-//                let pointAnnonation: WeMapPointAnnotation = WeMapPointAnnotation(CLLocationCoordinate2D(latitude: 21.0266469, longitude: 105.7615744))
-//                let shapeSource = WeMapShapeSource(identifier: "dest", point: pointAnnonation)
-//                if #available(iOS 13.0, *) {
-//                    wemapView.setImage(UIImage(systemName: "line.horizontal.3")!, forName: "dest")
-//                } else {
-//                    // Fallback on earlier versions
-//                }
-//                let shapeLayer = WeMapSymbolStyleLayer(identifier: "dest", source: shapeSource)
-//                wemapView.addSource(shapeSource)
-//                wemapView.addLayer(shapeLayer)
             }
         }
 }
 
 extension HomeViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let completeHandler: ([WeMapPlace]) -> Void = { wemapPlaces in
+        let completeHandler: ([WeMapPlace]) -> Void = { [weak self] wemapPlaces in
+            
+            guard let `self` = self else {return}
             if wemapPlaces.isEmpty {
                 DispatchQueue.main.async {
                     self.resutlsSearch = []
@@ -294,7 +295,14 @@ extension HomeViewController: UITextFieldDelegate {
                 }
                 return
             }
-            self.resutlsSearch = wemapPlaces
+            let start = CLLocation(latitude: self.centerMyhome.latitude, longitude: self.centerMyhome.longitude)
+            func sortPositon(pl1: WeMapPlace,pl2: WeMapPlace) -> Bool {
+                let end1 = CLLocation(latitude: pl1.location.latitude, longitude: pl1.location.longitude)
+                let end2 = CLLocation(latitude: pl2.location.latitude, longitude: pl2.location.longitude)
+                return start.distance(from: end1) < start.distance(from: end2)
+                
+            }
+            self.resutlsSearch = wemapPlaces.sorted(by: sortPositon)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -307,7 +315,8 @@ extension HomeViewController: UITextFieldDelegate {
        let wemapSearch = WeMapSearch()
 
        //gioi han so luong du lieu tra ve
-       let wemapOptions = WeMapSearchOptions(100, focusPoint: CLLocationCoordinate2D(latitude: 21.031772, longitude: 105.799508), latLngBounds: WeMapLatLonBounds(minLon: 104.799508, minLat: 20.031772, maxLon: 105.799508, maxLat: 21.031772))
+       let wemapOptions = WeMapSearchOptions(24, focusPoint: CLLocationCoordinate2D(latitude: 21.031772, longitude: 105.799508), latLngBounds: WeMapLatLonBounds(minLon: 104.799508, minLat: 20.031772, maxLon: 105.799508, maxLat: 21.031772))
+    
         
         
         if textField.text ?? "" != "" {
@@ -369,5 +378,55 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return rs.joined(separator: ", ")
     }
+    
+}
+
+
+extension HomeViewController: LeftMenuViewControllerDelegate {
+    func setPosition(type: typePositions) {
+        self.mode = .TenPositon
+        self.wemapView.removeAllAnnotation()
+        let wemapSearch = WeMapSearch()
+
+        //gioi han so luong du lieu tra ve
+        let wemapOptions = WeMapSearchOptions(24, focusPoint: centerMyhome, latLngBounds: WeMapLatLonBounds(minLon: 104.799508, minLat: 20.031772, maxLon: 105.799508, maxLat: 21.031772))
+        var searchText = "circle k"
+        if type == .CircleK {
+            searchText = "circle k"
+        }
+        if type == .FixMotobike {
+            searchText = "sữa xe máy"
+        }
+        if type == .Fuel {
+            searchText = "cây xăng"
+        }
+        
+        
+        wemapSearch.search(searchText, wemapSearchOptions: wemapOptions ) {[weak self] wemapPlace in
+            guard let `self` = self else {return}
+            
+            let start = CLLocation(latitude: self.centerMyhome.latitude, longitude: self.centerMyhome.longitude)
+            func sortPositon(pl1: WeMapPlace,pl2: WeMapPlace) -> Bool {
+                let end1 = CLLocation(latitude: pl1.location.latitude, longitude: pl1.location.longitude)
+                let end2 = CLLocation(latitude: pl2.location.latitude, longitude: pl2.location.longitude)
+                return start.distance(from: end1) < start.distance(from: end2)
+                
+            }
+            let places = wemapPlace.sorted(by: sortPositon).prefix(10)
+            
+            self.wemapView.selectAnnotation(WeMapPointAnnotation(self.centerMyhome), animated: false, completionHandler: {})
+            self.resultPoints = []
+            for place in places {
+                self.resultPoints.append(place.location)
+                self.wemapView.selectAnnotation(WeMapPointAnnotation(place.location), animated: false, completionHandler: {})
+            }
+            
+            
+
+        }
+        
+        
+    }
+    
     
 }
