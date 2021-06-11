@@ -35,17 +35,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func ActionBack(_ sender: Any) {
         self.mode = .Normal
         self.wemapView.removeAllAnnotation()
+        self.resetDestPosition()
     }
     
     public var mode: Mode = .Normal {
         didSet {
             if mode == .Normal  {
                 vSearch.isHidden = false
-                vLocator.isHidden = false
+//                vLocator.isHidden = false
                 vSearchRoad.isHidden = false
             } else {
                 vSearch.isHidden = true
-                vLocator.isHidden = true
+//                vLocator.isHidden = true
                 vSearchRoad.isHidden = true
 //                tableView.isHidden = true
             }
@@ -53,13 +54,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var menu = SideMenuNavigationController(rootViewController: LeftMenuViewController())
+    
+    let imageNameCirclek = "cart.circle.fill"
+    let imageNameFixMotobike = "gearshape.fill"
+    let imageNameFuel = "cylinder.fill"
 
     let leftMenu = LeftMenuViewController()
+    
+    var typePosition: typePositions = .CircleK
 
     let locationManager = CLLocationManager()
 
-    
-    let centerMyhome: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 20.993893749513248, longitude: 105.82176090675364)
+    var centerMyhome: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 21.0266469, longitude: 105.7615744)
     
     var wemapView: WeMapView = WeMapView()
     
@@ -98,6 +104,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if let location = locations.first {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
+            self.centerMyhome = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
     }
     
@@ -147,13 +154,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         tableView.dataSource = self
 
         
-        
-        
         menu = SideMenuNavigationController(rootViewController: leftMenu)
         menu.leftSide = true
         menu.presentationStyle = .menuSlideIn
         menu.statusBarEndAlpha = 0
-        menu.menuWidth = 250
+        menu.menuWidth = 300
         self.menu.presentationStyle.presentingEndAlpha = 0.5
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view, forMenu: .left)
@@ -199,6 +204,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 
+
 extension HomeViewController: WeMapViewDelegate {
     func WeMapViewDidFinishLoadingMap(_ wemapView: WeMapView) {
         let coordinates = [
@@ -239,46 +245,63 @@ extension HomeViewController: WeMapViewDelegate {
             singleTap.require(toFail: recognizer)
         }
         wemapView.addGestureRecognizer(singleTap)
+        wemapView.addTrafficLayer()
+        wemapView.addSatelliteLayer()
+        wemapView.removeTrafficLayer()
+        wemapView.removeSatelliteLayer()
 
     }
 
 //    func wemapView(_ wemapView: WeMapView, annotationCanShowCallout annotation: WeMapAnnotation) -> Bool {
 //        return true
 //    }
-    
+
     // MARK: - Feature interaction
         @objc func handleMapTap(sender: UITapGestureRecognizer) {
             self.tfSearch.endFloatingCursor()
             self.tfSearch.endEditing(true)
             let point = sender.location(in: sender.view!)
             let touchCoordinate = wemapView.convert(point, toCoordinateFrom: sender.view!)
+            
             if sender.state == .ended {
                 if mode == .Normal {
-                    
+
                     wemapView.removeAllAnnotation()
-                    
+
                     // Try matching the exact point first.
                     wemapView.selectAnnotation(WeMapPointAnnotation(touchCoordinate), animated: false, completionHandler: {})
-                    
+
                     tfSearch.text = String(touchCoordinate.latitude) + ", " + String(touchCoordinate.longitude)
                 } else {
-//
-//                    func sortPositon(pl1: WeMapPlace,pl2: WeMapPlace) -> Bool {
-//                        let end1 = CLLocation(latitude: pl1.location.latitude, longitude: pl1.location.longitude)
-//                        let end2 = CLLocation(latitude: pl2.location.latitude, longitude: pl2.location.longitude)
-//                        return start.distance(from: end1) < start.distance(from: end2)
-//
+
+                    let layerIdentifiers: Set = ["dest-position"]
+                                // Try matching the exact point first.
+                    let point = sender.location(in: sender.view!)
+//                    for pointAnnotation in wemapView.visibleFeatures(at: point, styleLayerIdentifiers: layerIdentifiers) {
+//                        wemapView.selectAnnotation(pointAnnotation, animated: false, completionHandler: {})
+//                        return
 //                    }
-                    let start = CLLocation(latitude: touchCoordinate.latitude, longitude: touchCoordinate.longitude)
-                    for point in self.resultPoints {
-                        let end = CLLocation(latitude: point.latitude, longitude: point.longitude)
-                        print(start.distance(from: end))
-                        if start.distance(from: end) < 100 {
-                            print("hi")
-                        }
+
+                    let touchCoordinate = wemapView.convert(point, toCoordinateFrom: sender.view!)
+                    let touchLocation = CLLocation(latitude: touchCoordinate.latitude , longitude: touchCoordinate.longitude )
+
+                    // Otherwise, get all features within a rect the size of a touch (44x44).
+                    let touchRect = CGRect(origin: point, size: .zero).insetBy(dx: -22.0, dy: -22.0)
+                    let possibleFeatures = wemapView.visibleFeatures(inCGRect: touchRect, styleLayerIdentifiers: Set(layerIdentifiers))
+
+                    // Select the closest feature to the touch center.
+                    let closestFeatures = possibleFeatures?.sorted(by: {
+                        return CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude).distance(from: touchLocation) < CLLocation(latitude: $1.coordinate.latitude, longitude: $1.coordinate.longitude).distance(from: touchLocation)
+                    })
+                    if let feature = closestFeatures?.first {
+//                        wemapView.selectAnnotation(feature, animated: false, completionHandler: {})
+                        let nextVC = RouteViewController()
+                        nextVC.endLocation = feature.coordinate
+                        self.navigationController?.pushViewController(nextVC, animated: true)
+                        return
                     }
                 }
-                
+
             }
         }
 }
@@ -286,7 +309,6 @@ extension HomeViewController: WeMapViewDelegate {
 extension HomeViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let completeHandler: ([WeMapPlace]) -> Void = { [weak self] wemapPlaces in
-            
             guard let `self` = self else {return}
             if wemapPlaces.isEmpty {
                 DispatchQueue.main.async {
@@ -322,11 +344,54 @@ extension HomeViewController: UITextFieldDelegate {
         if textField.text ?? "" != "" {
             wemapSearch.search(textField.text ?? "", wemapSearchOptions: wemapOptions, completeHandler: completeHandler)
         }
-        
-       
-        
-        
-       //        wemapSearch.reverse(CLLocationCoordinate2D(latitude: 21.031772, longitude: 105.799508), wemapSearchOptions: wemapOptions, completeHandler: completeHandler)
+    }
+    
+    
+    func resetDestPosition() {
+        wemapView.removeLayer("dest-position")
+        wemapView.removeSource("dest-source")
+    }
+    
+    
+    func setDestPosition() {
+        resetDestPosition()
+        let coordinates = self.resultPoints
+
+                // Fill an array with point annotations and add it to the map.
+                var pointAnnotations = [WeMapPointAnnotation]()
+                for coordinate in coordinates {
+                    let point = WeMapPointAnnotation(coordinate)
+                    point.title = "\(coordinate.latitude), \(coordinate.longitude)"
+                    pointAnnotations.append(point)
+                }
+                // Create a data source to hold the point data
+                let shapeSource = WeMapShapeSource(identifier: "dest-source", points: pointAnnotations)
+
+                // Create a style layer for the symbol
+                let shapeLayer = WeMapSymbolStyleLayer(identifier: "dest-position", source: shapeSource)
+
+                // Add the image to the style's sprite
+        var imageName = self.imageNameCirclek
+        if self.typePosition == .FixMotobike {
+            imageName = self.imageNameFixMotobike
+        }
+        if self.typePosition == .Fuel {
+            imageName = self.imageNameFuel
+        }
+        if #available(iOS 13.0, *) {
+            if let image = UIImage(systemName: imageName) {
+                wemapView.setImage(image, forName: "dest-image")
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+
+                // Tell the layer to use the image in the sprite
+                shapeLayer.iconImageName = NSExpression(forConstantValue: "dest-image")
+
+                // Add the source and style layer to the map
+                wemapView.addSource(shapeSource)
+                wemapView.addLayer(shapeLayer)
     }
 }
 
@@ -401,6 +466,7 @@ extension HomeViewController: LeftMenuViewControllerDelegate {
             searchText = "cây xăng"
         }
         
+        self.typePosition = type
         
         wemapSearch.search(searchText, wemapSearchOptions: wemapOptions ) {[weak self] wemapPlace in
             guard let `self` = self else {return}
@@ -410,23 +476,29 @@ extension HomeViewController: LeftMenuViewControllerDelegate {
                 let end1 = CLLocation(latitude: pl1.location.latitude, longitude: pl1.location.longitude)
                 let end2 = CLLocation(latitude: pl2.location.latitude, longitude: pl2.location.longitude)
                 return start.distance(from: end1) < start.distance(from: end2)
-                
             }
             let places = wemapPlace.sorted(by: sortPositon).prefix(10)
             
             self.wemapView.selectAnnotation(WeMapPointAnnotation(self.centerMyhome), animated: false, completionHandler: {})
             self.resultPoints = []
+            
             for place in places {
                 self.resultPoints.append(place.location)
-                self.wemapView.selectAnnotation(WeMapPointAnnotation(place.location), animated: false, completionHandler: {})
+//                self.wemapView.selectAnnotation(WeMapPointAnnotation(place.location), animated: false, completionHandler: {})
             }
             
-            
-
+            self.setDestPosition()
         }
-        
-        
     }
+    
+    func wemapView(_ weMapView: WeMapView, annotationCanShowCallout annotation: WeMapAnnotation) -> Bool {
+        return true
+    }
+    
+    func wemapView(_ weMapView: WeMapView, annotation: WeMapAnnotation, calloutAccessoryControlTapped control: UIControl) {
+        print("tap tap")
+    }
+
     
     
 }

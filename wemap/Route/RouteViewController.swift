@@ -11,7 +11,9 @@ import CoreLocation
 class RouteViewController: UIViewController {
 
     @IBOutlet weak var btnBack: UIButton!
-
+    @IBOutlet weak var vTime: UIView!
+    @IBOutlet weak var lblTime: UILabel!
+    
     
     var startLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 20.993893749513248, longitude: 105.82176090675364)
     
@@ -28,6 +30,8 @@ class RouteViewController: UIViewController {
         view.addSubview(wemapView)
         wemapView.delegate = self
         view.bringSubviewToFront(btnBack)
+//        view.bringSubviewToFront(vTime)
+        
     }
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -55,6 +59,9 @@ extension RouteViewController: WeMapViewDelegate {
                 endLocation
             ]
         
+        wemapView.selectAnnotation(WeMapPointAnnotation(startLocation), animated: false, completionHandler: {})
+        wemapView.selectAnnotation(WeMapPointAnnotation(endLocation), animated: false, completionHandler: {})
+        
         let wemapOptions = WeMapDirectionOptions(vehicle: self.vehicle, instruction: false)
         wemapDirection.route(points, wemapDirectionOptions: wemapOptions) { paths in
                 if paths.count > 0 {
@@ -76,6 +83,10 @@ extension RouteViewController: WeMapViewDelegate {
                     // Add the source and style layer to the map
                     wemapView.addSource(shapeSource)
                     wemapView.addLayer(layer)
+                    DispatchQueue.main.async {
+                        self.lblTime.text = "Thời gian: " + String(path.time)
+                    }
+                    
                     //Total time
                     print(path.time)
                 }

@@ -13,7 +13,11 @@ class LeftMenuViewController:
     
 //   MARK: --var
     
-    var arrName = ["10 chỗ sửa xe gần nhất", "!0 quán Circle K gần nhất", "10 cây xăng gần nhất"]
+    var arrName = ["10 quán Circle K gần nhất", "10 chỗ sửa xe gần nhất", "10 cây xăng gần nhất"]
+    let arrImg = ["cart.circle.fill", "gearshape.fill", "cylinder.fill"]
+    let imageNameCirclek = "cart.circle.fill"
+    let imageNameFixMotobike = "gearshape.fill"
+    let imageNameFuel = "cylinder.fill"
     weak var delegate: LeftMenuViewControllerDelegate? = nil
 //    MARK: --lifecycle
     
@@ -61,17 +65,22 @@ extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         cell.lblTitle.text = arrName[indexPath.row]
+        if #available(iOS 13.0, *) {
+            cell.icon.image = UIImage(systemName: arrImg[indexPath.row])
+        } else {
+            // Fallback on earlier versions
+        }
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            delegate?.setPosition(type: .FixMotobike)
+            delegate?.setPosition(type: .CircleK)
             self.dismiss(animated: true, completion: nil)
         }
         if indexPath.row == 1 {
-            delegate?.setPosition(type: .CircleK)
+            delegate?.setPosition(type: .FixMotobike)
             self.dismiss(animated: true, completion: nil)
         }
         if indexPath.row == 2 {
