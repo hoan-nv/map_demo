@@ -245,10 +245,6 @@ extension HomeViewController: WeMapViewDelegate {
             singleTap.require(toFail: recognizer)
         }
         wemapView.addGestureRecognizer(singleTap)
-        wemapView.addTrafficLayer()
-        wemapView.addSatelliteLayer()
-        wemapView.removeTrafficLayer()
-        wemapView.removeSatelliteLayer()
 
     }
 
