@@ -65,7 +65,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
 
-    var centerMyhome: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 21.0266469, longitude: 105.7615744)
+//    var centerMyhome: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 21.0266469, longitude: 105.7615744)
+    var centerMyhome: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 20.993893749513248, longitude: 105.82176090675364)
     
     var wemapView: WeMapView = WeMapView()
     

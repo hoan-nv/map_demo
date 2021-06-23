@@ -61,8 +61,8 @@
                                                 <action selector="startAction:" destination="-1" eventType="touchUpInside" id="U7Q-LB-AXt"/>
                                             </connections>
                                         </button>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chọn điểm đi" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBa-Sw-3rx">
-                                            <rect key="frame" x="70" y="10" width="264" height="30"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chọn điểm đi (Mặc định là vị trí của bạn)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBa-Sw-3rx">
+                                            <rect key="frame" x="55" y="10" width="279" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="NGI-qd-urQ"/>
                                             </constraints>
@@ -72,7 +72,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="WBa-Sw-3rx" firstAttribute="leading" secondItem="Emr-WP-4RL" secondAttribute="trailing" constant="20" id="Ejd-vx-S0B"/>
+                                        <constraint firstItem="WBa-Sw-3rx" firstAttribute="leading" secondItem="Emr-WP-4RL" secondAttribute="trailing" constant="5" id="Ejd-vx-S0B"/>
                                         <constraint firstItem="Emr-WP-4RL" firstAttribute="top" secondItem="uxP-M4-aAF" secondAttribute="top" id="OJ9-Rb-7h5"/>
                                         <constraint firstItem="Emr-WP-4RL" firstAttribute="leading" secondItem="uxP-M4-aAF" secondAttribute="leading" id="Ug5-fa-CG1"/>
                                         <constraint firstAttribute="trailing" secondItem="WBa-Sw-3rx" secondAttribute="trailing" constant="20" id="Xub-4Q-jWD"/>
@@ -94,8 +94,8 @@
                                                 <action selector="endAction:" destination="-1" eventType="touchUpInside" id="mbz-Fg-eJ2"/>
                                             </connections>
                                         </button>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chọn điểm đến" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJk-sD-Cuu">
-                                            <rect key="frame" x="70" y="10" width="264" height="30"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chọn điểm đến (Mặc định là vị trí của bạn)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJk-sD-Cuu">
+                                            <rect key="frame" x="55" y="10" width="279" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="UBl-B3-JSK"/>
                                             </constraints>
@@ -111,7 +111,7 @@
                                         <constraint firstAttribute="trailing" secondItem="uJk-sD-Cuu" secondAttribute="trailing" constant="20" id="Jl0-qY-WCY"/>
                                         <constraint firstItem="dQZ-aJ-DOn" firstAttribute="leading" secondItem="0el-sZ-O49" secondAttribute="leading" id="OAR-KV-KyI"/>
                                         <constraint firstItem="dQZ-aJ-DOn" firstAttribute="top" secondItem="0el-sZ-O49" secondAttribute="top" id="crK-8C-eo2"/>
-                                        <constraint firstItem="uJk-sD-Cuu" firstAttribute="leading" secondItem="dQZ-aJ-DOn" secondAttribute="trailing" constant="20" id="hAe-53-fNk"/>
+                                        <constraint firstItem="uJk-sD-Cuu" firstAttribute="leading" secondItem="dQZ-aJ-DOn" secondAttribute="trailing" constant="5" id="hAe-53-fNk"/>
                                     </constraints>
                                 </view>
                             </subviews>

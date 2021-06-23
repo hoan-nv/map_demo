@@ -34,6 +34,7 @@ class SelectPositionViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.bringSubviewToFront(imgLocation)
         view.bringSubviewToFront(btnDone)
+        view.bringSubviewToFront(btnBack)
     }
     @IBAction func done(_ sender: Any) {
         let screenSize = view.bounds.size

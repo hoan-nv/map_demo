@@ -88,7 +88,7 @@ extension RouteViewController: WeMapViewDelegate {
                     }
                     
                     //Total time
-                    print(path.time)
+                    print("time \(path.time)")
                 }
             }
 
